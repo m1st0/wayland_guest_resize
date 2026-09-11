@@ -38,6 +38,30 @@ hyprctl eval
 Hyprland applies the new resolution
 ```
 
+## Virtio GPU Guest Boot Configuration
+
+*Note:* For GRUB-based CachyOS guests, `virtio_gpu.modeset=1` must be included in the guest's `GRUB_CMDLINE_LINUX_DEFAULT` in `/etc/default/grub`.
+
+For example:
+
+```bash
+GRUB_CMDLINE_LINUX_DEFAULT="... virtio_gpu.modeset=1"
+```
+
+Then regenerate the guest's GRUB configuration:
+
+```bash
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+For systemd-boot installations, again the equivalent kernel parameter must be passed to the guest kernel:
+
+```bash
+virtio_gpu.modeset=1
+```
+
+`spice-vdagent` and `spice-vdagentd` should be installed and operational for full SPICE guest integration. The resolution synchronization performed by herein however is relying on the Virtio-GPU DRM mode change rather than relying on spice-vdagent to configure the Wayland display.
+
 ## Requirements
 
 - CachyOS guest

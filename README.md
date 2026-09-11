@@ -40,7 +40,7 @@ Hyprland applies the new resolution
 
 ## Virtio GPU Guest Boot Configuration
 
-*Note:* For GRUB-based CachyOS guests, `virtio_gpu.modeset=1` must be included in the guest's `GRUB_CMDLINE_LINUX_DEFAULT` in `/etc/default/grub`.
+**Note:** For GRUB-based CachyOS guests, `virtio_gpu.modeset=1` must be included in the guest's `GRUB_CMDLINE_LINUX_DEFAULT` in `/etc/default/grub`.
 
 For example:
 
@@ -75,13 +75,13 @@ virtio_gpu.modeset=1
 The script currently assumes the guest display is exposed as:
 
 ```text
-/sys/class/drm/card1-Virtual-1`
+/sys/class/drm/card1-Virtual-1
 ```
 
 and the Hyprland output is:
 
 ```text
-Virtual-1`
+Virtual-1
 ```
 
 These may need to be adjusted for a different VM configuration.
